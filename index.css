@@ -99,6 +99,7 @@ body {
   box-shadow: 0 1px 6px -2px #000;
   background-color: #FFF;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .card img {
@@ -106,6 +107,7 @@ body {
   height: 150px;
   border-radius: 3px;
   margin-right: 20px;
+  flex-basis: 25%;
 }
 
 .card .name {
@@ -123,5 +125,31 @@ body {
   margin: 3px 0 10px;
 }
 
+.card-info {
+  flex-basis: 70%;
+}
+
+.expand {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+#expandIcon {
+  background: transparent;
+  border-radius: 2px;
+  border: 1px solid black;
+  padding: 0.5% 1%;
+  margin-top: 1%;
+}
+
+#expandIcon:hover {
+  background: #333;
+  color: #fff;
+}
+
+.hidden {
+  height: 1px;
+  opacity: 0;
+}
 
 

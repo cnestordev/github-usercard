@@ -6,6 +6,7 @@ const gitUrl = 'https://api.github.com/users'
 axios.get(`${gitUrl}/cnestordev`).then(res => {
   const data = res.data
   cardsDiv.appendChild(gitCardMaker(data))
+  // debugger;
 })
 
 
@@ -32,6 +33,27 @@ function gitCardMaker(gitObj) {
   const p6 = document.createElement('p')
   const anchor = document.createElement('a')
 
+  //stretch goal----------------------------------
+  const expandDiv = document.createElement('div')
+  const expandIcon = document.createElement('button')
+  const ps1 = document.createElement('p')
+  const ps2 = document.createElement('p')
+  expandIcon.textContent = "Expand"
+  expandIcon.setAttribute('id', 'expandIcon')
+
+  ps1.textContent = `Public Repos: ${gitObj['public_repos']}`
+  ps2.textContent = `Public Gigsts: ${gitObj['public_gists']}`
+  expandDiv.appendChild(ps1)
+  expandDiv.appendChild(ps2)
+
+  expandDiv.classList.add('hidden')
+  expandDiv.classList.add('expand')
+
+  expandIcon.addEventListener('click', () => {
+    expandDiv.classList.toggle('hidden')
+  })
+
+  // ------------------------------------------------
   //add attributes to elements
   card.classList.add('card')
   image.setAttribute('src', gitObj['avatar_url'])
@@ -62,6 +84,9 @@ function gitCardMaker(gitObj) {
   cardInfo.appendChild(p4)
   cardInfo.appendChild(p5)
   cardInfo.appendChild(p6)
+
+  card.appendChild(expandIcon)
+  card.appendChild(expandDiv)
 
   //return parent element
   return card
